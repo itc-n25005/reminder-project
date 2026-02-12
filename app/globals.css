@@ -1,7 +1,47 @@
+:root {
+  --font-sans: "Helvetica Neue", Arial, sans-serif;
+  --color-text-main: Black;
+  --color-accent: #0070f3;
+  --color-border: #eaeaea;
+  --border-radius: 8px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-sans);
+  color: var(--color-text-main);
+  background-color: var(--color-bg-main);
+}
+
+a {
+  color: var(--color-accent);
+  text-decoration: none;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  border-radius: var(--border-radius);
+  background-color: var(--color-accent);
+  color: #fff;
+  padding: 0.5rem 1rem;
+  transition: background-color 0.3s ease;
+}
+button:hover {
+  background-color: darken(var(--color-accent), 10%);
+}
+
+ul {
+  list-style-type: none;
+}
+
 .title {
   font-size: 2rem;
   font-weight: bold;
-  text-align: center;
-  color: #333333;
   margin-bottom: 1rem;
 }
