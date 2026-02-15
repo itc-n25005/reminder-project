@@ -1,3 +1,15 @@
+.title {
+  font-size: 32px;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 20px;
+  text-align: center;
+}
+.subtitle {
+  font-size: 24px;
+  color: #555;
+  margin-bottom: 15px;
+}
 .tasks {
   padding: 20px;
   background-color: #f9f9f9;
@@ -29,4 +41,8 @@
   margin-bottom: 15px;
   border-bottom: 1px solid #ddd;
   padding-bottom: 10px;
+}
+.reminderLink {
+  margin-top: 30px;
+  text-align: center;
 }
