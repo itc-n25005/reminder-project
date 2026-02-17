@@ -1,0 +1,19 @@
+.list {
+  list-style-type: none;
+  padding: 0;
+}
+.text {
+  font-size: 1.2em;
+  margin-bottom: 0.5em;
+}
+.time {
+  color: gray;
+  font-size: 0.9em;
+}
+.reminderItem {
+  margin-bottom: 1em;
+}
+.date {
+  font-weight: bold;
+  margin-top: 1em;
+}
