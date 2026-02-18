@@ -9,3 +9,6 @@
   font-weight: bold;
   transition: background-color 0.3s ease;
 }
+.Button:hover {
+  background-color: #005bb5;
+}

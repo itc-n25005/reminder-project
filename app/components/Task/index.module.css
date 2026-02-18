@@ -2,8 +2,11 @@
   list-style-type: none;
   padding: 0;
 }
-.text {
+.event {
   font-size: 1.2em;
+  margin-bottom: 0.5em;
+}
+.date {
   margin-bottom: 0.5em;
 }
 .time {
@@ -13,7 +16,7 @@
 .reminderItem {
   margin-bottom: 1em;
 }
-.date {
-  font-weight: bold;
-  margin-top: 1em;
+.empty {
+  font-style: italic;
+  color: gray;
 }

@@ -20,7 +20,10 @@ export default function ReminderList({ tasks }: Props) {
       {tasks.map((task) => (
         <li key={task.id} className={styles.reminderItem}>
           <div className={styles.reminderContent}>
-            <p className={styles.reminderText}>{task.text}</p>
+            <p className={styles.reminderText}>{task.event}</p>
+            <p className={styles.reminderDate}>
+              {new Date(task.date).toLocaleDateString()}
+            </p>
             <p className={styles.reminderTime}>
               {new Date(task.time).toLocaleString()}
             </p>

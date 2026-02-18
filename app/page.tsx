@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import styles from "./page.module.css";
 
 import Task from "@/app/components/Task";
@@ -10,8 +11,9 @@ import { task, todo } from "@/app/libs/microcms";
 const tasks: task[] = [
   {
     id: 1,
-    text: "オンライン説明会",
-    time: "2026-02-12T10:00",
+    event: "オンライン説明会",
+    date: "2026-02-12",
+    time: "10:00",
     done: false,
   },
 ];
@@ -19,16 +21,24 @@ const tasks: task[] = [
 const todos: todo[] = [
   {
     id: 1,
-    text: "起床",
-    time: "2026-02-12T07:00",
+    event: "起床",
+    date: "2026-02-12",
+    time: "07:00",
     done: false,
   },
 ];
 
 export default function Home() {
   return (
-    <main>
-      <h1 className={styles.title}>Reminder</h1>
+    <main className={styles.main}>
+      <div className={styles.header}>
+        <h1 className={styles.title}>📌 Reminder</h1>
+        <div className={styles.settingButton}>
+          <ButtonLink href="/setting">
+            <Image src="/setting.png" alt="設定" width={30} height={30} />
+          </ButtonLink>
+        </div>
+      </div>
       <h2 className={styles.subtitle}>今後の予定</h2>
       <Task tasks={tasks} />
       <div className={styles.taskLink}>

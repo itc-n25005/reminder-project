@@ -20,7 +20,10 @@ export default function TodoList({ todos }: Props) {
       {todos.map((todo) => (
         <li key={todo.id} className={style.todoItem}>
           <div className={style.todoContent}>
-            <p className={style.todoText}>{todo.text}</p>
+            <p className={style.todoText}>{todo.event}</p>
+            <p className={style.todoDate}>
+              {new Date(todo.date).toLocaleDateString()}
+            </p>
             <p className={style.todoTime}>
               {new Date(todo.time).toLocaleString()}
             </p>
