@@ -1,4 +1,4 @@
-import styles from "./page.module.css";
+import styles from "./index.module.css";
 import { task } from "@/app/libs/microcms";
 
 type Props = {
