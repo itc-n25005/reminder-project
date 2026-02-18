@@ -2,9 +2,9 @@
 
 import styles from "./page.module.css";
 
-import Task from "@/app/components/Task/page";
-import Todo from "@/app/components/Todo/page";
-import ButtonLink from "@/app/ButtonLink/page";
+import Task from "@/app/components/Task";
+import Todo from "@/app/components/Todo";
+import ButtonLink from "@/app/components/ButtonLink";
 import { task, todo } from "@/app/libs/microcms";
 
 const tasks: task[] = [
@@ -12,7 +12,6 @@ const tasks: task[] = [
     id: 1,
     text: "オンライン説明会",
     time: "2026-02-12T10:00",
-    tag: { name: "NextEvent", color: "blue" },
     done: false,
   },
 ];
@@ -22,7 +21,6 @@ const todos: todo[] = [
     id: 1,
     text: "起床",
     time: "2026-02-12T07:00",
-    tag: { name: "Morning", color: "orange" },
     done: false,
   },
 ];
