@@ -1,8 +1,8 @@
 import styles from "./index.module.css";
-import { task } from "@/app/libs/microcms";
+import { Task } from "@/app/libs/microcms";
 
 type Props = {
-  tasks: task[];
+  tasks: Task[];
 };
 
 export default function ReminderList({ tasks }: Props) {

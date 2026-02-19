@@ -1,8 +1,8 @@
 import style from "./index.module.css";
-import { todo } from "@/app/libs/microcms";
+import { Todo } from "@/app/libs/microcms";
 
 type Props = {
-  todos: todo[];
+  todos: Todo[];
 };
 
 export default function TodoList({ todos }: Props) {

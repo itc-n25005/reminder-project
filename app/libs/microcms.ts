@@ -1,13 +1,12 @@
-import { createClient } from "microcms-js-sdk";
-
-export type task = {
+export type Task = {
   id: number;
   event: string;
   date: string;
   time: string;
   done: boolean;
 };
-export type todo = {
+
+export type Todo = {
   id: number;
   event: string;
   date: string;
