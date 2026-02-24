@@ -1,0 +1,32 @@
+.main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+.header {
+  margin-bottom: 20px;
+}
+.title {
+  font-size: 2.5rem;
+  font-weight: bold;
+}
+.subtitle {
+  font-size: 1.5rem;
+  margin-top: 20px;
+}
+p {
+  font-size: 1rem;
+  margin-top: 10px;
+}
+input [type="checkbox"] {
+  width: 20px;
+  height: 20px;
+  margin-right: 10px;
+}
+input [type="number"] {
+  width: 60px;
+  padding: 5px;
+  margin-left: 10px;
+}
