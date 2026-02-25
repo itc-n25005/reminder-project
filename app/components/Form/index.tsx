@@ -34,12 +34,12 @@ export default function Form({ type, onAdd, onClose }: Props) {
   return (
     <div style={overlayStyle}>
       <div style={modalStyle}>
-        <h2>{type === "task" ? "Task追加" : "Todo追加"}</h2>
+        <h2>{type === "task" ? "追加" : "追加"}</h2>
 
         <form onSubmit={handleSubmit}>
           <input
             type="text"
-            placeholder="内容"
+            placeholder="予定"
             value={event}
             onChange={(e) => setEvent(e.target.value)}
             required

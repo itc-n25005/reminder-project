@@ -43,3 +43,56 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 ↓
 
 予定から大きく変わってしまった
+
+↓
+
+確認、タグ機能がなくなった
+
+# 作ったきっかけ
+
+課題や締切の管理が苦手で、予定ギリギリだったり、過ぎていたりしていることが多かったので、管理できるようになりたいから。
+定期は、今より早く家から出発したいと思っているがなかなかできなかったから。
+
+# 通知
+
+通知許可と通知時間は/Setting,
+画面右の歯車のマークから行ける
+
+通知は<h2 className={styles.subtitle}>通知設定</h2>
+
+<p>通知許可</p>
+<input
+type="checkbox"
+checked={setting.notificationEnabled}
+onChange={(e) => {
+const newSetting = {
+...setting,
+notificationEnabled: e.target.checked,
+};
+saveSetting(newSetting);
+}}
+/>で設定できる。
+
+       <p>通知前の時間</p>
+      <input
+        type="number"
+        value={setting.notifyBeforeMinutes}
+        onChange={(e) => {
+          const newSetting = {
+            ...setting,
+            notifyBeforeMinutes: parseInt(e.target.value, 10),
+          };
+          saveSetting(newSetting);
+        }}
+      />で何分前に通知するかを決められる。
+
+# 追加削除
+
+<button onClick={() => setShowTaskForm(true)}>追加</button>で追加できる
+
+buttonを押すとformが出てくる
+内容は予定を入力できるテキストと日付と時間
+項目をすべて入力すると、予定が表示される
+削除ボタンを押すと、予定が消える
+予定がないと「リマインダーがありません。
+予定を追加してみましょう！」が表示される。

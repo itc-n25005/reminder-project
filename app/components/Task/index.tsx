@@ -27,7 +27,7 @@ export default function TaskList({ tasks, onDelete }: Props) {
             </p>
             <p className={styles.reminderTime}>{task.time}</p>
 
-            <button onClick={() => onDelete(task.id)}>削除する</button>
+            <button onClick={() => onDelete(task.id)}>削除</button>
           </div>
         </li>
       ))}

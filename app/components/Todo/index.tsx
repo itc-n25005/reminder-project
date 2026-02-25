@@ -27,7 +27,7 @@ export default function TodoList({ todos, onDelete }: Props) {
             </p>
             <p className={style.todoTime}>{todo.time}</p>
 
-            <button onClick={() => onDelete(todo.id)}>削除する</button>
+            <button onClick={() => onDelete(todo.id)}>削除</button>
           </div>
         </li>
       ))}
