@@ -1,15 +1,15 @@
-export type Task = {
-  id: number;
+export interface Task {
+  id: string;
   event: string;
   date: string;
   time: string;
   done: boolean;
-};
+}
 
-export type Todo = {
-  id: number;
+export interface Todo {
+  id: string;
   event: string;
   date: string;
   time: string;
   done: boolean;
-};
+}

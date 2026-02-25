@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
 
 import styles from "./index.module.css";
 
@@ -10,6 +11,8 @@ type Setting = {
 };
 
 export default function Setting() {
+  const router = useRouter();
+
   const [setting, setSetting] = useState<Setting>({
     notificationEnabled: Notification.permission === "granted",
     notifyBeforeMinutes: 10,
@@ -59,6 +62,7 @@ export default function Setting() {
           saveSetting(newSetting);
         }}
       />
+      <button onClick={() => router.push("/")}>リマインダーページへ戻る</button>
     </main>
   );
 }

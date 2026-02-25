@@ -3,9 +3,10 @@ import { Task } from "@/app/libs/microcms";
 
 type Props = {
   tasks: Task[];
+  onDelete: (id: number) => void;
 };
 
-export default function ReminderList({ tasks }: Props) {
+export default function TaskList({ tasks, onDelete }: Props) {
   if (tasks.length === 0) {
     return (
       <div className={styles.empty}>
@@ -24,9 +25,9 @@ export default function ReminderList({ tasks }: Props) {
             <p className={styles.reminderDate}>
               {new Date(task.date).toLocaleDateString()}
             </p>
-            <p className={styles.reminderTime}>
-              {new Date(task.time).toLocaleString()}
-            </p>
+            <p className={styles.reminderTime}>{task.time}</p>
+
+            <button onClick={() => onDelete(task.id)}>削除する</button>
           </div>
         </li>
       ))}

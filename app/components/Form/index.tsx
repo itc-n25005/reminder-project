@@ -3,48 +3,52 @@
 import { useState } from "react";
 
 type Props = {
+  type: "task" | "todo";
+  onAdd: (data: {
+    event: string;
+    date: string;
+    time: string;
+    done: boolean;
+  }) => void;
   onClose: () => void;
 };
 
 export default function TaskForm({ onClose }: Props) {
-  const [title, setTitle] = useState("");
-  const [datetime, setDatetime] = useState("");
+  const [event, setEvent] = useState("");
+  const [date, setDate] = useState("");
+  const [time, setTime] = useState("");
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    await fetch("/api/tasks", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        title,
-        datetime,
-        done: false,
-        notified: false,
-      }),
-    });
-
-    onClose(); // フォーム閉じる
+    onClose();
   };
 
   return (
     <div style={overlayStyle}>
       <div style={modalStyle}>
-        <h2>タスク追加</h2>
+        <h2>追加</h2>
 
         <form onSubmit={handleSubmit}>
           <input
             type="text"
-            placeholder="タイトル"
-            value={title}
-            onChange={(e) => setTitle(e.target.value)}
+            placeholder="予定"
+            value={event}
+            onChange={(e) => setEvent(e.target.value)}
             required
           />
 
           <input
-            type="datetime-local"
-            value={datetime}
-            onChange={(e) => setDatetime(e.target.value)}
+            type="date"
+            value={date}
+            onChange={(e) => setDate(e.target.value)}
+            required
+          />
+
+          <input
+            type="time"
+            value={time}
+            onChange={(e) => setTime(e.target.value)}
             required
           />
 

@@ -3,9 +3,10 @@ import { Todo } from "@/app/libs/microcms";
 
 type Props = {
   todos: Todo[];
+  onDelete: (id: number) => void;
 };
 
-export default function TodoList({ todos }: Props) {
+export default function TodoList({ todos, onDelete }: Props) {
   if (todos.length === 0) {
     return (
       <div className={style.empty}>
@@ -24,9 +25,9 @@ export default function TodoList({ todos }: Props) {
             <p className={style.todoDate}>
               {new Date(todo.date).toLocaleDateString()}
             </p>
-            <p className={style.todoTime}>
-              {new Date(todo.time).toLocaleString()}
-            </p>
+            <p className={style.todoTime}>{todo.time}</p>
+
+            <button onClick={() => onDelete(todo.id)}>削除する</button>
           </div>
         </li>
       ))}
