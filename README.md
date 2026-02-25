@@ -39,3 +39,7 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 
 イベント表示
 確認、通知、タグ付き
+
+↓
+
+予定から大きく変わってしまった
