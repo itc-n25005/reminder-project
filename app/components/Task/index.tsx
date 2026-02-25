@@ -3,7 +3,7 @@ import { Task } from "@/app/libs/microcms";
 
 type Props = {
   tasks: Task[];
-  onDelete: (id: number) => void;
+  onDelete: (id: string) => void;
 };
 
 export default function TaskList({ tasks, onDelete }: Props) {

@@ -3,7 +3,7 @@ import { Todo } from "@/app/libs/microcms";
 
 type Props = {
   todos: Todo[];
-  onDelete: (id: number) => void;
+  onDelete: (id: string) => void;
 };
 
 export default function TodoList({ todos, onDelete }: Props) {

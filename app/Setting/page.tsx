@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 
-import styles from "./index.module.css";
+import styles from "./page.module.css";
 
 type Setting = {
   notificationEnabled: boolean;

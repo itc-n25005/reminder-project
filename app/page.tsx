@@ -1,12 +1,11 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import type { Task, Todo } from "@/app/libs/microcms";
 import Image from "next/image";
 import styles from "./page.module.css";
 
 import Link from "next/link";
-import Setting from "@/app/Setting";
 import Form from "@/app/components/Form";
 import TaskList from "./components/Task";
 import TodoList from "./components/Todo";
@@ -14,7 +13,8 @@ import TodoList from "./components/Todo";
 export default function Home() {
   const [tasks, setTasks] = useState<Task[]>([]);
   const [todos, setTodos] = useState<Todo[]>([]);
-  const [showForm, setShowForm] = useState(false);
+  const [showTaskForm, setShowTaskForm] = useState(false);
+  const [showTodoForm, setShowTodoForm] = useState(false);
 
   useEffect(() => {
     const savedTasks = localStorage.getItem("tasks");
@@ -32,44 +32,27 @@ export default function Home() {
     localStorage.setItem("todos", JSON.stringify(todos));
   }, [todos]);
 
-  useEffect(() => {
-    if (Notification.permission !== "granted") {
-      Notification.requestPermission();
-    }
-  }, []);
+  const handleAddTask = (data: Omit<Task, "id">) => {
+    const newTask: Task = {
+      id: crypto.randomUUID(),
+      ...data,
+    };
+    setTasks((prev) => [...prev, newTask]);
+  };
 
-  const handleAddTask = (task: Task) => setTasks([...tasks, task]);
+  const handleAddTodo = (data: Omit<Todo, "id">) => {
+    const newTodo: Todo = {
+      id: crypto.randomUUID(),
+      ...data,
+    };
+    setTodos((prev) => [...prev, newTodo]);
+  };
+
   const handleDeleteTask = (id: string) =>
-    setTasks(tasks.filter((task) => task.id !== id));
+    setTasks((prev) => prev.filter((task) => task.id !== id));
 
-  const handleAddTodo = (todo: Todo) => setTodos([...todos, todo]);
   const handleDeleteTodo = (id: string) =>
-    setTodos(todos.filter((todo) => todo.id !== id));
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      const now = new Date();
-
-      tasks.forEach((task: any) => {
-        const taskDate = new Date(`${task.date}T${task.time}`);
-
-        if (
-          taskDate.getFullYear() === now.getFullYear() &&
-          taskDate.getMonth() === now.getMonth() &&
-          taskDate.getDate() === now.getDate() &&
-          taskDate.getHours() === now.getHours() &&
-          taskDate.getMinutes() === now.getMinutes() &&
-          !task.done
-        ) {
-          new Notification("📌 リマインダー", {
-            body: task.todo,
-          });
-        }
-      });
-    }, 60000);
-
-    return () => clearInterval(interval);
-  }, [tasks]);
+    setTodos((prev) => prev.filter((todo) => todo.id !== id));
 
   return (
     <main className={styles.main}>
@@ -77,35 +60,37 @@ export default function Home() {
         <h1 className={styles.title}>📌 Reminder</h1>
         <li className={styles.settingButton}>
           <Link href="/Setting">
-            <Image src="/setting.png" alt="設定" width={30} height={30} />
+            <Image src="/setting.png" alt="設定" width={30} height={30} />{" "}
           </Link>
         </li>
       </div>
+      <h2>今後の予定</h2>
 
-      <h2 className={styles.subtitle}>今後の予定</h2>
-      <TaskList tasks={tasks} onDelete={function (id: number): void {}} />
-      <div className={styles.taskLink}>
-        <button onClick={() => setShowForm(true)}>追加</button>
-        {showForm && (
-          <Form
-            type="task"
-            onClose={() => setShowForm(false)}
-            onAdd={handleAddTask}
-          />
-        )}
-      </div>
-      <h3 className={styles.subtitle}>定期リマインダー</h3>
-      <TodoList todos={todos} onDelete={function (id: number): void {}} />
-      <div className={styles.todoLink}>
-        <button onClick={() => setShowForm(true)}>追加</button>
-        {showForm && (
-          <Form
-            type="todo"
-            onClose={() => setShowForm(false)}
-            onAdd={handleAddTodo}
-          />
-        )}
-      </div>
+      <TaskList tasks={tasks} onDelete={handleDeleteTask} />
+
+      <button onClick={() => setShowTaskForm(true)}>追加</button>
+
+      {showTaskForm && (
+        <Form
+          type="task"
+          onClose={() => setShowTaskForm(false)}
+          onAdd={handleAddTask}
+        />
+      )}
+
+      <h2>定期リマインダー</h2>
+
+      <TodoList todos={todos} onDelete={handleDeleteTodo} />
+
+      <button onClick={() => setShowTodoForm(true)}>追加</button>
+
+      {showTodoForm && (
+        <Form
+          type="todo"
+          onClose={() => setShowTodoForm(false)}
+          onAdd={handleAddTodo}
+        />
+      )}
     </main>
   );
 }

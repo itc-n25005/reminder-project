@@ -13,13 +13,20 @@ type Props = {
   onClose: () => void;
 };
 
-export default function TaskForm({ onClose }: Props) {
+export default function Form({ type, onAdd, onClose }: Props) {
   const [event, setEvent] = useState("");
   const [date, setDate] = useState("");
   const [time, setTime] = useState("");
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+
+    onAdd({
+      event,
+      date,
+      time,
+      done: false,
+    });
 
     onClose();
   };
@@ -27,12 +34,12 @@ export default function TaskForm({ onClose }: Props) {
   return (
     <div style={overlayStyle}>
       <div style={modalStyle}>
-        <h2>追加</h2>
+        <h2>{type === "task" ? "Task追加" : "Todo追加"}</h2>
 
         <form onSubmit={handleSubmit}>
           <input
             type="text"
-            placeholder="予定"
+            placeholder="内容"
             value={event}
             onChange={(e) => setEvent(e.target.value)}
             required
